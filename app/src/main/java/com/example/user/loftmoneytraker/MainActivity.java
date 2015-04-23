@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-               txt.setText("boom");
+               txt.setText("Boom");
             }
         });
     }
