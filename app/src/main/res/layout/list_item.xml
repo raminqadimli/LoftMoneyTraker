@@ -12,7 +12,7 @@
             android:id="@+id/name_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title"/>
+            android:text="@string/title" />
 
         <TextView
             android:id="@+id/date_id"
@@ -20,10 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="8sp"
-            android:text="@string/date"/>
+            android:text="@string/date"
+            android:textSize="@dimen/date_text_size" />
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/sum_id"
         style="@style/TextMain"
@@ -32,8 +33,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:text="@string/sum"/>
+        android:text="@string/sum"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -2,9 +2,9 @@
     style="@style/Container.Background">
 
     <LinearLayout
-        android:background="#f7f7f7"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/background_main">
 
         <ListView
             android:id="@+id/list_view_id"
