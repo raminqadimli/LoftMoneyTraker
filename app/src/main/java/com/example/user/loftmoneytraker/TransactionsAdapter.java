@@ -1,7 +1,6 @@
 package com.example.user.loftmoneytraker;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +12,12 @@ import java.util.ArrayList;
 /**
  * Created by Admin on 27-Apr-15.
  */
-public class ProductAdapter extends ArrayAdapter<Product> {
+public class TransactionsAdapter extends ArrayAdapter<Transaction> {
 
     private final Context context;
-    private final ArrayList<Product> products;
+    private final ArrayList<Transaction> products;
 
-    public ProductAdapter(Context context, ArrayList<Product> products) {
+    public TransactionsAdapter(Context context, ArrayList<Transaction> products) {
         super(context, 0, products);
         this.context = context;
         this.products = products;
@@ -26,7 +25,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Product product = getItem(position);
+        Transaction product = getItem(position);
         ViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
@@ -42,9 +41,9 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         holder.txvDate.setText(product.getCreatedDate());
         holder.txvSumm.setText(Integer.toString(product.getSum()));
         if (position % 2 == 0) {
-            convertView.setBackgroundColor(Color.parseColor("#EFEFEF"));
+            convertView.setBackgroundColor(context.getResources().getColor(R.color.even_list_item));
         } else {
-            convertView.setBackgroundColor(Color.parseColor("#CAFFFF"));
+            convertView.setBackgroundColor(context.getResources().getColor(R.color.odd_list_item));
         }
 
         return convertView;

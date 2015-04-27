@@ -1,12 +1,12 @@
 package com.example.user.loftmoneytraker;
 
-public class Product {
+public class Transaction {
 
     private String name;
     private String createDate;
     private int sum;
 
-    public Product(String name, String createDate, int sum) {
+    public Transaction(String name, String createDate, int sum) {
         this.name = name;
         this.createDate = createDate;
         this.sum = sum;
