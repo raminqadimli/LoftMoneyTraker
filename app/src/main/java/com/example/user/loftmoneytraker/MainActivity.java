@@ -25,12 +25,9 @@ public class MainActivity extends ActionBarActivity {
 
     private ArrayList<Product> GetProductsList(int size)
     {
-
         ArrayList<Product> p = new ArrayList<Product>();
         for(int i = 1; i <=size ; i++){
-
           p.add(new Product("Product" + i,new SimpleDateFormat("dd-MM-yyyy").format(new Date()) ,i*1000));
-
         }
 
         return  p;
