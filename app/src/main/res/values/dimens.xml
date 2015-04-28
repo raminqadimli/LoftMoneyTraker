@@ -7,4 +7,8 @@
     <dimen name="summ_text_size">16sp</dimen>
     <dimen name="summ_margin_right">10dp</dimen>
     <dimen name="summ_margin_top">10dp</dimen>
+    <dimen name="details_transaction_margin">5dp</dimen>
+    <dimen name="details_transaction_textsize">20dp</dimen>
+    <integer name="transactions_fragment_weight">5</integer>
+    <integer name="detailtransactions_fragment_weight">3</integer>
 </resources>

@@ -1,20 +1,21 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
     style="@style/Container.Background">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="com.example.user.loftmoneytraker.TransactionsFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="@integer/transactions_fragment_weight" />
+
+    <fragment
+        android:id="@+id/detailTransactionsFragment"
+        android:name="com.example.user.loftmoneytraker.TransactionDetailFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background_main">
+        android:layout_height="match_parent"
+        android:layout_weight="@integer/detailtransactions_fragment_weight" />
 
-        <ListView
-            android:id="@+id/list_view_id"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@color/link_text_material_dark"
-            android:dividerHeight="@dimen/list_divider_height">
-
-        </ListView>
-    </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>

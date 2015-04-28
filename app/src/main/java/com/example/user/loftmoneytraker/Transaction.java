@@ -5,11 +5,13 @@ public class Transaction {
     private String name;
     private String createDate;
     private int sum;
+    private String description;
 
     public Transaction(String name, String createDate, int sum) {
         this.name = name;
         this.createDate = createDate;
         this.sum = sum;
+        this.description = "Транзакция " + name + " создана " + createDate + " на сумму " + sum;
     }
 
     public String getName() {
@@ -34,6 +36,10 @@ public class Transaction {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
 
