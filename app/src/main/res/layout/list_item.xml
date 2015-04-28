@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/sum_id"
-        style="@style/TextMain"
+        style="@style/summText"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"

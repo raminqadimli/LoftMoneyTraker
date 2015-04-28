@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/link_text_material_dark"
-            android:dividerHeight="0.4dp">
+            android:dividerHeight="@dimen/list_divider_height">
 
         </ListView>
     </LinearLayout>
