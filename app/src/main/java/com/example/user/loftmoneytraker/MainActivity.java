@@ -16,13 +16,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayList<Transaction> products = GetTransactionList(8);
+        ArrayList<Transaction> products = getTransactionList(8);
         TransactionsAdapter adapter = new TransactionsAdapter(this, products);
         ListView list = (ListView) findViewById(R.id.list_view_id);
         list.setAdapter(adapter);
     }
 
-    private ArrayList<Transaction> GetTransactionList(int size) {
+    private ArrayList<Transaction> getTransactionList(int size) {
         ArrayList<Transaction> p = new ArrayList<Transaction>();
         for (int i = 1; i <= size; i++) {
             p.add(new Transaction("Transaction" + i, new SimpleDateFormat("dd-MM-yyyy").format(new Date()), i * 1000));
