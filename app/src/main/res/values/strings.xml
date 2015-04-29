@@ -7,5 +7,6 @@
     <string name="title">Title</string>
     <string name="sum">Sum</string>
     <string name="date">Date</string>
+    <string name="descriptionTransaction">Транзакция %1$s создана %2$s на сумму %3$d</string>
 
 </resources>
