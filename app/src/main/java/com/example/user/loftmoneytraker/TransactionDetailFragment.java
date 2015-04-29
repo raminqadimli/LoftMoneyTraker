@@ -13,14 +13,11 @@ import android.widget.TextView;
 public class TransactionDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_detail_transaction, container, false);
-
         return view;
     }
 
     public void setTransactionDescription(String description) {
-
         TextView txtView = (TextView) getView().findViewById(R.id.detailsText);
         txtView.setText(description);
     }

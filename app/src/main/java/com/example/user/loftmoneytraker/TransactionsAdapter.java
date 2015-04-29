@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class TransactionsAdapter extends ArrayAdapter<Transaction> {
 
     private final Context context;
-    private final ArrayList<Transaction> products;
+    private final ArrayList<Transaction> transactions;
 
-    public TransactionsAdapter(Context context, ArrayList<Transaction> products) {
-        super(context, 0, products);
+    public TransactionsAdapter(Context context, ArrayList<Transaction> transactions) {
+        super(context, 0, transactions);
         this.context = context;
-        this.products = products;
+        this.transactions = transactions;
     }
 
     @Override

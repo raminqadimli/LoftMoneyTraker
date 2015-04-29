@@ -1,6 +1,5 @@
 package com.example.user.loftmoneytraker;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
@@ -14,10 +13,6 @@ public class TransactionActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            finish();
-            return;
-        }
         setContentView(R.layout.activity_detail_transaction);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
