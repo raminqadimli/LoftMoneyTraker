@@ -29,8 +29,8 @@ public class TransactionsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_list_transaction, container, false);
 
-        ArrayList<Transaction> products = getTransactionList(8);
-        TransactionsAdapter adapter = new TransactionsAdapter(getActivity(), products);
+        ArrayList<Transaction> transactions = getTransactionList(8);
+        TransactionsAdapter adapter = new TransactionsAdapter(getActivity(), transactions);
         ListView list = (ListView) view.findViewById(R.id.list_view_id);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +57,7 @@ public class TransactionsFragment extends Fragment {
     private ArrayList<Transaction> getTransactionList(int size) {
         ArrayList<Transaction> p = new ArrayList<Transaction>();
         for (int i = 1; i <= size; i++) {
-            p.add(new Transaction("Transaction" + i, new SimpleDateFormat("dd-MM-yyyy").format(new Date()), i * 1000));
+            p.add(new Transaction("Transaction" + i, new SimpleDateFormat("dd-MM-yyyy").format(new Date()), i * 1000, getResources().getString(R.string.descriptionTransaction)));
         }
 
         return p;

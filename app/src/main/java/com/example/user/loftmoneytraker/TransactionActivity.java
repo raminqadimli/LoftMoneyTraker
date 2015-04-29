@@ -16,6 +16,7 @@ public class TransactionActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             finish();
+            return;
         }
         setContentView(R.layout.activity_detail_transaction);
         Bundle bundle = getIntent().getExtras();

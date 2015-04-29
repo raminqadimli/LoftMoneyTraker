@@ -7,11 +7,11 @@ public class Transaction {
     private int sum;
     private String description;
 
-    public Transaction(String name, String createDate, int sum) {
+    public Transaction(String name, String createDate, int sum, String descriptionFormat) {
         this.name = name;
         this.createDate = createDate;
         this.sum = sum;
-        this.description = "Транзакция " + name + " создана " + createDate + " на сумму " + sum;
+        this.description = String.format(descriptionFormat, name, createDate, sum);
     }
 
     public String getName() {
