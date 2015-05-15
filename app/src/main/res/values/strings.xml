@@ -8,5 +8,10 @@
     <string name="sum">Sum</string>
     <string name="date">Date</string>
     <string name="descriptionTransaction">Транзакция %1$s создана %2$s на сумму %3$d</string>
-
+    <string name="reports">Статистика</string>
+    <array name="drawer_items">
+        <item>Траты</item>
+        <item>Категории</item>
+        <item>Статистика</item>
+    </array>
 </resources>

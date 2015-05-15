@@ -28,7 +28,7 @@ public class TransactionsAdapter extends ArrayAdapter<Transaction> {
         Transaction product = getItem(position);
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.transaction_list_item, parent, false);
             holder = new ViewHolder();
             holder.txvName = (TextView) convertView.findViewById(R.id.name_id);
             holder.txvDate = (TextView) convertView.findViewById(R.id.date_id);
