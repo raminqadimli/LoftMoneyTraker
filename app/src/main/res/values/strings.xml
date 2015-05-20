@@ -4,14 +4,16 @@
     <string name="app_name">LoftMoneyTraker</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="user_name">Рамин Кадымли</string>
+    <string name="user_mail">ramin.qadimli@gts.az</string>
     <string name="title">Title</string>
     <string name="sum">Sum</string>
     <string name="date">Date</string>
     <string name="descriptionTransaction">Транзакция %1$s создана %2$s на сумму %3$d</string>
     <string name="reports">Статистика</string>
-    <array name="drawer_items">
-        <item>Траты</item>
-        <item>Категории</item>
-        <item>Статистика</item>
-    </array>
+    <string name="drawer_item_transaction">Траты</string>
+    <string name="drawer_item_category">Категории</string>
+    <string name="drawer_item_report">Статистика</string>
+    <string name="drawer_item_settings">Настройки</string>
+    <string name="drawer_item_help">Помощь</string>
 </resources>

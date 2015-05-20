@@ -10,4 +10,9 @@
     <color name="text_color">#7F7F7F</color>
     <color name="green_dark">#157E46</color>
     <color name="left_drawer_background">#111</color>
+    <color name="primary">#3f51b5</color>
+    <color name="primary_dark">#303f9f</color>
+    <color name="ripple">#F06292</color>
+    <color name="accent">#E91E63</color>
+    <color name="primary_pressed">#C2185B</color>
 </resources>

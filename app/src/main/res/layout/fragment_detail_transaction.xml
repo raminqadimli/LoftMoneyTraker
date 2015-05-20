@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_custom_background">
+    style="@style/Container.Background">
 
     <TextView
         android:id="@+id/detailsText"

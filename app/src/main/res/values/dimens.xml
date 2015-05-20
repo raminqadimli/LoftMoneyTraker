@@ -17,4 +17,11 @@
     <dimen name="left_drawer_width">180dp</dimen>
     <integer name="transactions_fragment_weight">5</integer>
     <integer name="detailtransactions_fragment_weight">3</integer>
+    <dimen name="fab_margin">5dp</dimen>
+    <dimen name="cardview_height">90dp</dimen>
+    <dimen name="cardview_margin">5dp</dimen>
+    <dimen name="cardview_corner_radius">8dp</dimen>
+    <dimen name="cardview_elevation">7dp</dimen>
+
+
 </resources>
