@@ -3,11 +3,15 @@ package com.example.user.loftmoneytraker;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,17 +32,17 @@ public class TransactionsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_transaction, container, false);
 
-        ArrayList<Transaction> transactions = getTransactionList(8);
-        TransactionsAdapter adapter = new TransactionsAdapter(getActivity(), transactions);
-        ListView list = (ListView) view.findViewById(R.id.list_view_id);
+        ArrayList<Transaction> transactions = getTransactionList(30);
+        RecyclerView list = (RecyclerView) view.findViewById(R.id.list_view_id);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        list.setLayoutManager(layoutManager);
+
+        TransactionsAdapter adapter = new TransactionsAdapter(transactions);
         list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Transaction transaction = (Transaction) parent.getAdapter().getItem(position);
-                sendDetailTransaction(transaction.getDescription());
-            }
-        });
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.attachToRecyclerView(list);
         return view;
     }
 
