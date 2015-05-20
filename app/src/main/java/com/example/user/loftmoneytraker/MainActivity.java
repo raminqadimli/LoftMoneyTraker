@@ -85,12 +85,6 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // drawerToggle.syncState();
-    }
-
-    @Override
     public void setTitle(CharSequence title) {
         super.setTitle(title);
     }
