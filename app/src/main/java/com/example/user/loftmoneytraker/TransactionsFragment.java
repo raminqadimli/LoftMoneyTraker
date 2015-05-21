@@ -2,48 +2,48 @@ package com.example.user.loftmoneytraker;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 /**
  * Created by Admin on 28-Apr-15.
  */
+@EFragment(R.layout.fragment_list_transaction)
 public class TransactionsFragment extends Fragment {
 
     private OnListTransactionListener mListener;
+
+    @ViewById(R.id.list_view_id)
+    RecyclerView list;
+
+    @ViewById(R.id.fab)
+    FloatingActionButton fab;
 
     public interface OnListTransactionListener {
         public void onItemSelected(String description);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_transaction, container, false);
-
+    @AfterViews
+    void init() {
         ArrayList<Transaction> transactions = getTransactionList(30);
-        RecyclerView list = (RecyclerView) view.findViewById(R.id.list_view_id);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         list.setLayoutManager(layoutManager);
 
         TransactionsAdapter adapter = new TransactionsAdapter(transactions);
         list.setAdapter(adapter);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.attachToRecyclerView(list);
-        return view;
     }
 
     @Override

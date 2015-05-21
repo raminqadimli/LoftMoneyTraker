@@ -1,25 +1,26 @@
 package com.example.user.loftmoneytraker;
 
 import android.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 
 /**
  * Created by Admin on 03-May-15.
  */
+@EFragment(R.layout.fragment_list_category)
 public class CategoriesFragment extends Fragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_category, container, false);
-        ListView list = (ListView) view.findViewById(R.id.list_view_id);
+    @ViewById(R.id.list_view_id)
+    ListView list;
+
+    @AfterViews
+    void init() {
         list.setAdapter(new CategoryAdapter(getActivity(), getCategoryList()));
-        return view;
     }
 
     private ArrayList<Category> getCategoryList() {

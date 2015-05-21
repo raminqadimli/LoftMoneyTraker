@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
 
     @AfterViews
     void init() {
-        if (mainToolbar != null) {
-            setSupportActionBar(mainToolbar);
-        }
+        setSupportActionBar(mainToolbar);
         createNavigationDrawer();
         showFragment(0);
         setTitle(getResources().getString(R.string.drawer_item_transaction));
@@ -119,13 +117,13 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new TransactionsFragment();
+                fragment = new TransactionsFragment_();
                 break;
             case 1:
-                fragment = new CategoriesFragment();
+                fragment = new CategoriesFragment_();
                 break;
             case 2:
-                fragment = new ReportsFragment();
+                fragment = new ReportsFragment_();
                 break;
         }
         if (fragment != null) {
