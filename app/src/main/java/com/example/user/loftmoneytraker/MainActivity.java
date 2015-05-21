@@ -2,16 +2,10 @@ package com.example.user.loftmoneytraker;
 
 import android.app.Fragment;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
@@ -22,34 +16,34 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
 
+@EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements TransactionsFragment.OnListTransactionListener {
-    private Toolbar main_toolbar;
+
+    @ViewById
+    Toolbar mainToolbar;
+
     private Drawer.Result navigationDrawer;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        main_toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (main_toolbar != null) {
-            setSupportActionBar(main_toolbar);
+    @AfterViews
+    void init() {
+        if (mainToolbar != null) {
+            setSupportActionBar(mainToolbar);
         }
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        CreateNavigationDrawer();
-
+        createNavigationDrawer();
         showFragment(0);
         setTitle(getResources().getString(R.string.drawer_item_transaction));
-
     }
 
-    private void CreateNavigationDrawer() {
+    private void createNavigationDrawer() {
         AccountHeader.Result accountheader = createAccountHeader();
 
         navigationDrawer = new Drawer()
                 .withActivity(this)
-                .withToolbar(main_toolbar)
+                .withToolbar(mainToolbar)
                 .withAccountHeader(accountheader)
                 .withDisplayBelowToolbar(true)
                 .withActionBarDrawerToggleAnimated(true)
@@ -70,9 +64,9 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
 
     private IProfile createProfile() {
         return new ProfileDrawerItem()
-                    .withName(getResources().getString(R.string.user_name))
-                    .withEmail(getResources().getString(R.string.user_mail))
-                    .withIcon(getResources().getDrawable(R.drawable.ic_verified_user_black_48dp));
+                .withName(getResources().getString(R.string.user_name))
+                .withEmail(getResources().getString(R.string.user_mail))
+                .withIcon(getResources().getDrawable(R.drawable.ic_verified_user_black_48dp));
     }
 
     private IDrawerItem[] getDrawerItems() {
@@ -114,8 +108,8 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
 
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l, IDrawerItem iDrawerItem) {
-            if(iDrawerItem instanceof PrimaryDrawerItem){
-                setTitle(((PrimaryDrawerItem)iDrawerItem).getNameRes());
+            if (iDrawerItem instanceof PrimaryDrawerItem) {
+                setTitle(((PrimaryDrawerItem) iDrawerItem).getNameRes());
                 showFragment(i);
             }
         }
