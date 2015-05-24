@@ -1,17 +1,31 @@
 package com.example.user.loftmoneytraker;
 
-public class Transaction {
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
 
+import java.util.Date;
+
+@Table(name = "Transactions")
+public class Transaction extends Model {
+
+    @Column(name = "Name")
     private String name;
-    private String createDate;
-    private int sum;
-    private String description;
 
-    public Transaction(String name, String createDate, int sum, String descriptionFormat) {
+    @Column(name = "Sum")
+    private int sum;
+
+    @Column(name = "CreateDate")
+    private Date createDate;
+
+    public Transaction() {
+
+    }
+
+    public Transaction(String name, int sum, Date createDate) {
         this.name = name;
         this.createDate = createDate;
         this.sum = sum;
-        this.description = String.format(descriptionFormat, name, createDate, sum);
     }
 
     public String getName() {
@@ -22,11 +36,11 @@ public class Transaction {
         this.name = name;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createDate;
     }
 
-    public void setCreatedDate(String createDate) {
+    public void setCreatedDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -36,10 +50,6 @@ public class Transaction {
 
     public void setSum(int sum) {
         this.sum = sum;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
 

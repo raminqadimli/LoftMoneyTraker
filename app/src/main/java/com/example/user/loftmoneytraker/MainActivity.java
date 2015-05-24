@@ -77,11 +77,6 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
     }
 
     @Override
-    public void setTitle(CharSequence title) {
-        super.setTitle(title);
-    }
-
-    @Override
     public void onBackPressed() {
         if (navigationDrawer != null && navigationDrawer.isDrawerOpen()) {
             navigationDrawer.closeDrawer();
@@ -117,13 +112,13 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new TransactionsFragment_().builder().build();
+                fragment = TransactionsFragment_.builder().build();
                 break;
             case 1:
-                fragment = new CategoriesFragment_().builder().build();
+                fragment = CategoriesFragment_.builder().build();
                 break;
             case 2:
-                fragment = new ReportsFragment_().builder().build();
+                fragment = ReportsFragment_.builder().build();
                 break;
         }
         if (fragment != null) {

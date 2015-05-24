@@ -22,6 +22,9 @@
     <dimen name="cardview_margin">5dp</dimen>
     <dimen name="cardview_corner_radius">8dp</dimen>
     <dimen name="cardview_elevation">7dp</dimen>
-
+    <dimen name="medium_padding">20dp</dimen>
+    <dimen name="small_padding">10dp</dimen>
+    <dimen name="big_text_size">20dp</dimen>
+    <dimen name="medium_text_size">10dp</dimen>
 
 </resources>

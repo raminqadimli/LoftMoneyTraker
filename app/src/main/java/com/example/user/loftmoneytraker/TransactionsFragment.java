@@ -2,18 +2,22 @@ package com.example.user.loftmoneytraker;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.LoaderManager;
+import android.content.AsyncTaskLoader;
+import android.content.Loader;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
+import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -36,14 +40,46 @@ public class TransactionsFragment extends Fragment {
 
     @AfterViews
     void init() {
-        ArrayList<Transaction> transactions = getTransactionList(30);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         list.setLayoutManager(layoutManager);
 
-        TransactionsAdapter adapter = new TransactionsAdapter(transactions);
-        list.setAdapter(adapter);
 
         fab.attachToRecyclerView(list);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewTransactionActivity_.intent(getActivity()).start();
+            }
+        });
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLoaderManager().restartLoader(0, null, new LoaderManager.LoaderCallbacks<List<Transaction>>() {
+            @Override
+            public Loader<List<Transaction>> onCreateLoader(int id, Bundle args) {
+                AsyncTaskLoader<List<Transaction>> transactionsLoader = new AsyncTaskLoader<List<Transaction>>(getActivity()) {
+                    @Override
+                    public List<Transaction> loadInBackground() {
+                        return getTransactions();
+                    }
+                };
+                transactionsLoader.forceLoad();
+                return transactionsLoader;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<List<Transaction>> loader, List<Transaction> data) {
+                list.setAdapter(new TransactionsAdapter(data));
+            }
+
+            @Override
+            public void onLoaderReset(Loader<List<Transaction>> loader) {
+
+            }
+        });
     }
 
     @Override
@@ -56,13 +92,8 @@ public class TransactionsFragment extends Fragment {
         }
     }
 
-    private ArrayList<Transaction> getTransactionList(int size) {
-        ArrayList<Transaction> p = new ArrayList<Transaction>();
-        for (int i = 1; i <= size; i++) {
-            p.add(new Transaction("Transaction" + i, new SimpleDateFormat("dd-MM-yyyy").format(new Date()), i * 1000, getResources().getString(R.string.descriptionTransaction)));
-        }
-
-        return p;
+    private List<Transaction> getTransactions() {
+        return new Select().from(Transaction.class).orderBy("CreateDate Desc").execute();
     }
 
     private void sendDetailTransaction(String description) {
