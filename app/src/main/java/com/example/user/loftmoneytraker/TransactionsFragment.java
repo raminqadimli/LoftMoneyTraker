@@ -8,12 +8,12 @@ import android.content.Loader;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -45,13 +45,13 @@ public class TransactionsFragment extends Fragment {
 
 
         fab.attachToRecyclerView(list);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NewTransactionActivity_.intent(getActivity()).start();
-            }
-        });
 
+
+    }
+
+    @Click(R.id.fab)
+    void createTransaction() {
+        NewTransactionActivity_.intent(getActivity()).start();
     }
 
     @Override

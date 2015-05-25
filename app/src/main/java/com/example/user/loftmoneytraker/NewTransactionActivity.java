@@ -2,13 +2,13 @@ package com.example.user.loftmoneytraker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.EditText;
 
 import com.activeandroid.query.Select;
 import com.melnykov.fab.FloatingActionButton;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.ViewById;
@@ -36,21 +36,23 @@ public class NewTransactionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(getResources().getString(R.string.new_transaction));
         setHintFromLastTransaction();
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isValid()) {
-                    new Transaction(transactionName.getText().toString(), Integer.parseInt(transactionSum.getText().toString()), new Date()).save();
-                    finish();
-                }
-            }
-        });
+
+    }
+
+    @Click(R.id.fab)
+    void addTransaction() {
+        if (isValid()) {
+            new Transaction(transactionName.getText().toString(), Integer.parseInt(transactionSum.getText().toString()), new Date()).save();
+            finish();
+        }
     }
 
     private void setHintFromLastTransaction() {
         Transaction lastTransaction = getLastTransaction();
-        transactionName.setHint(lastTransaction.getName());
-        transactionSum.setHint(String.valueOf(lastTransaction.getSum()));
+        if (lastTransaction != null) {
+            transactionName.setHint(lastTransaction.getName());
+            transactionSum.setHint(String.valueOf(lastTransaction.getSum()));
+        }
     }
 
     private Transaction getLastTransaction() {
@@ -61,11 +63,11 @@ public class NewTransactionActivity extends AppCompatActivity {
         boolean isValid = true;
 
         if (isEmpty(transactionName)) {
-            transactionName.setError("Введите Примечание");
+            transactionName.setError(getResources().getString(R.string.error_transaction_name));
             isValid = false;
         }
         if (isEmpty(transactionSum)) {
-            transactionSum.setError("Введите Сумму");
+            transactionSum.setError(getResources().getString(R.string.error_transaction_sum));
             isValid = false;
         }
         return isValid;
