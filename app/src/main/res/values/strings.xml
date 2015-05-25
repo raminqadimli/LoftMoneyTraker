@@ -16,4 +16,17 @@
     <string name="drawer_item_report">Статистика</string>
     <string name="drawer_item_settings">Настройки</string>
     <string name="drawer_item_help">Помощь</string>
+    <string name="title_activity_new_transactions">NewTransactionsActivity</string>
+    <string name="hint_date">Сегодня</string>
+    <string name="title_date">Дата</string>
+    <string name="category_hint">Выберите категорию</string>
+    <string name="category_text">Категория</string>
+    <string name="name_hint">Война и мир</string>
+    <string name="name_text">Примечание</string>
+    <string name="sum_hint">300</string>
+    <string name="sum_text">Сумма</string>
+    <string name="new_transaction">Новая трата</string>
+    <string name="error_transaction_name">Введите Примечание</string>
+    <string name="error_transaction_sum">Введите Сумму</string>
+
 </resources>

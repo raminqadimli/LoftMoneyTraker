@@ -1,12 +1,20 @@
 <resources>
 
+
     <!-- Base application theme. -->
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+    <!--<item name="colorPrimaryDark">@color/green_dark</item>-->
+    <!--<item name="colorAccent">@color/green</item>-->
+    <!--<item name="colorPrimary">@color/green</item>-->
+    <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+    <!--</style>-->
 
     <style name="AppTheme" parent="AppTheme.Base" />
     <!-- Base application theme.
          Defining this lets values-v21/styles.xml reuse it with changes. -->
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- colorPrimary is used, for instance, for the default ActionBar
              (but not Toolbar) background.
               We specify the same color for the toolbar background in
@@ -22,6 +30,10 @@
         <item name="colorAccent">@color/green</item>
 
         <item name="android:textColor">@color/text_color</item>
+
+        <!--<item name="selectableItemBackground">@drawable/my_ripple</item>-->
+        <!--<item name="android:selectableItemBackground">@drawable/my_ripple</item>-->
+
     </style>
 
 
@@ -38,6 +50,10 @@
     </style>
 
     <style name="Container.Background">
+        <item name="android:background">@drawable/android_app_back_main</item>
+    </style>
+
+    <style name="Container.DarkBackground">
         <item name="android:background">@drawable/android_app_back</item>
     </style>
 
@@ -45,7 +61,7 @@
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
-    <style name="ToolbarColors" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="ToolbarColors" parent="Theme.AppCompat.NoActionBar">
         <!-- android:textColorPrimary is the  color of the title text
              in the Toolbar, in the Theme.AppCompat theme:  -->
         <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
@@ -70,11 +86,6 @@
               but setting this also changes the popup menu's background,
               even if we define popupTheme for our <Toolbar> -->
         <!--<item name="android:background">@color/color_primary</item> -->
-    </style>
-
-    <style name="summText">
-        <item name="android:textSize">@dimen/summ_text_size</item>
-        <item name="android:textColor">@color/summ_text_color</item>
     </style>
 
 

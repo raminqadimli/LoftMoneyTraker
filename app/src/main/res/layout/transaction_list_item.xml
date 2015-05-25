@@ -4,12 +4,12 @@
     style="@style/Container">
 
     <android.support.v7.widget.CardView
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/cardview_height"
-    android:layout_margin="@dimen/cardview_margin"
-    card_view:cardBackgroundColor="@color/background"
-    card_view:cardCornerRadius="@dimen/cardview_corner_radius"
-    card_view:cardElevation = "@dimen/cardview_elevation">
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cardview_height"
+        android:layout_margin="@dimen/cardview_margin"
+        card_view:cardBackgroundColor="@color/background"
+        card_view:cardCornerRadius="@dimen/cardview_corner_radius"
+        card_view:cardElevation="@dimen/cardview_elevation">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,7 +40,6 @@
 
             <TextView
                 android:id="@+id/sum_id"
-                style="@style/summText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
