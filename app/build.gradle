@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/notice.txt'
+    }
 }
 
 dependencies {
@@ -32,6 +36,8 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:3.3.1"
     apt "org.androidannotations:androidannotations:3.3.1"
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'com.google.code.gson:gson:2.3.1'
 }
 
 apt {
