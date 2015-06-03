@@ -30,7 +30,7 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Transaction product = transactions.get(position);
-        holder.txvName.setText(product.getName());
+        holder.txvName.setText(product.getComment());
         holder.txvSumm.setText(Integer.toString(product.getSum()));
         holder.txvDate.setText(new SimpleDateFormat("dd-MM-yyyy").format(product.getCreatedDate()));
     }

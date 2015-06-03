@@ -50,7 +50,7 @@ public class NewTransactionActivity extends AppCompatActivity {
     private void setHintFromLastTransaction() {
         Transaction lastTransaction = getLastTransaction();
         if (lastTransaction != null) {
-            transactionName.setHint(lastTransaction.getName());
+            transactionName.setHint(lastTransaction.getComment());
             transactionSum.setHint(String.valueOf(lastTransaction.getSum()));
         }
     }

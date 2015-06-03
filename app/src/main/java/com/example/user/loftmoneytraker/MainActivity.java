@@ -7,6 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.example.user.loftmoneytraker.rest.AuthResult;
+import com.example.user.loftmoneytraker.rest.AuthenticatorInterceptor;
+import com.example.user.loftmoneytraker.rest.RestClient;
+import com.example.user.loftmoneytraker.rest.TransactionsResult;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.accountswitcher.AccountHeader;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -17,14 +21,19 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.rest.RestService;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements TransactionsFragment.OnListTransactionListener {
 
     @ViewById
     Toolbar mainToolbar;
+
+    @RestService
+    RestClient restApi;
 
     private Drawer.Result navigationDrawer;
 
@@ -34,6 +43,16 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
         createNavigationDrawer();
         showFragment(0);
         setTitle(getResources().getString(R.string.drawer_item_transaction));
+        testRestApi();
+    }
+
+    @Background
+    void testRestApi() {
+        AuthResult authResult = restApi.login("ramin.qadimli", "Aa123456");
+        AuthenticatorInterceptor.authToken = authResult.getAuthToken();
+        restApi.addCategory("Clothes");
+        restApi.addTransaction(100, "Jeans", "2015-06-03");
+        TransactionsResult transactionsResult = restApi.getTransactions();
     }
 
     private void createNavigationDrawer() {

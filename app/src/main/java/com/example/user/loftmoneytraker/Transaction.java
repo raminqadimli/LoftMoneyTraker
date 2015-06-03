@@ -10,38 +10,38 @@ import java.util.Date;
 public class Transaction extends Model {
 
     @Column(name = "Name")
-    private String name;
+    private String comment;
 
     @Column(name = "Sum")
     private int sum;
 
     @Column(name = "CreateDate")
-    private Date createDate;
+    private Date trDate;
 
     public Transaction() {
 
     }
 
     public Transaction(String name, int sum, Date createDate) {
-        this.name = name;
-        this.createDate = createDate;
+        this.comment = name;
+        this.trDate = createDate;
         this.sum = sum;
     }
 
-    public String getName() {
-        return name;
+    public String getComment() {
+        return comment;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setComment(String name) {
+        this.comment = name;
     }
 
     public Date getCreatedDate() {
-        return createDate;
+        return trDate;
     }
 
     public void setCreatedDate(Date createDate) {
-        this.createDate = createDate;
+        this.trDate = createDate;
     }
 
     public int getSum() {
