@@ -7,8 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.example.user.loftmoneytraker.rest.AuthResult;
-import com.example.user.loftmoneytraker.rest.AuthenticatorInterceptor;
+import com.example.user.loftmoneytraker.auth.SessionManager;
 import com.example.user.loftmoneytraker.rest.RestClient;
 import com.example.user.loftmoneytraker.rest.TransactionsResult;
 import com.mikepenz.materialdrawer.Drawer;
@@ -22,7 +21,9 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Receiver;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.rest.RestService;
 
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
     @RestService
     RestClient restApi;
 
+    @Bean
+    SessionManager sessionManager;
+
     private Drawer.Result navigationDrawer;
 
     @AfterViews
@@ -43,16 +47,23 @@ public class MainActivity extends AppCompatActivity implements TransactionsFragm
         createNavigationDrawer();
         showFragment(0);
         setTitle(getResources().getString(R.string.drawer_item_transaction));
-        testRestApi();
     }
 
     @Background
     void testRestApi() {
-        AuthResult authResult = restApi.login("ramin.qadimli", "Aa123456");
-        AuthenticatorInterceptor.authToken = authResult.getAuthToken();
-        restApi.addCategory("Clothes");
-        restApi.addTransaction(100, "Jeans", "2015-06-03");
         TransactionsResult transactionsResult = restApi.getTransactions();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sessionManager.login(this);
+    }
+
+
+    @Receiver(actions = {SessionManager.SESSION_OPENED_BROADCAST}, registerAt = Receiver.RegisterAt.OnResumeOnPause, local = true)
+    void onSessionOpen() {
+        testRestApi();
     }
 
     private void createNavigationDrawer() {

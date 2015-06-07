@@ -15,5 +15,4 @@ public class AuthResult extends Result {
         return id;
     }
 
-
 }
