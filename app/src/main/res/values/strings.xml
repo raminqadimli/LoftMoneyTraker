@@ -28,5 +28,7 @@
     <string name="new_transaction">Новая трата</string>
     <string name="error_transaction_name">Введите Примечание</string>
     <string name="error_transaction_sum">Введите Сумму</string>
+    <string name="login">Login</string>
+    <string name="login_error">Error</string>
 
 </resources>
